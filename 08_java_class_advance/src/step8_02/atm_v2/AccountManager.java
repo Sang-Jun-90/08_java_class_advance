@@ -52,4 +52,18 @@ public class AccountManager {
 		
 	}
 	
+	void deleteAcc(int delNum,int identifier) {
+		
+		int del = delNum;
+		Account[] temp = um.userList[identifier].acc;
+		um.userList[identifier].acc = new Account[um.userList[identifier].accCnt-1];
+		for (int i = 0; i < del; i++) {
+			um.userList[identifier].acc[i] = temp[i];
+		}
+		for (int i = del; i < um.userList[identifier].accCnt-1; i++) {
+			um.userList[identifier].acc[i] = temp[i+1];
+		}
+		um.userList[identifier].accCnt--;
+	}
+	
 }

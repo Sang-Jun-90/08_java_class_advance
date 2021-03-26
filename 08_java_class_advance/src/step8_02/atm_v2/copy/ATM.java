@@ -1,40 +1,43 @@
-package step8_02.atm_v2;
+package step8_02.atm_v2.copy;
 
 import java.util.Scanner;
+
+import step8_02.atm_v2.AccountManager;
+import step8_02.atm_v2.FileManager;
 
 public class ATM {
 	
 	Scanner scan = new Scanner(System.in);
 	int identifier = -1;
+	
 	UserManager um = UserManager.getInstance();
 	
 	void play() {
-		
-		FileManager.getInstance().load();
 		UserManager.getInstance().printAllUser();
 		
-		while (true) {
-			
+		while(true) {
 			System.out.println("[ATM]");
 			System.out.println("[1.회원가입]\n[2.로그인]\n[0.종료]");
 			System.out.print("메뉴 선택 : ");
 			int sel = scan.nextInt();
 			
-			if		(sel == 1)  join();
-			else if (sel == 2)  login();  
-			else if (sel == 0)  break;
+			if (sel == 1) join();
+			else if (sel == 2) login();
+			else if (sel == 0) break;
 			
 		}
 		
+		
 	}
 	
+	void join() {
+		um.joinMember();
+	}
 	
 	void login() {
-		
 		identifier = um.logUser();
-		if (identifier != -1) loginMenu();
-		else 				  System.out.println("[메세지]아이디와 패스워드를 확인해주세요.");
-
+		if (identifier != 1) loginMenu();
+		else System.out.println("아이디또는 패스워드 확인");
 	}
 	
 	
@@ -46,24 +49,18 @@ public class ATM {
 			System.out.println("[1.계좌생성]\n[2.계좌삭제]\n[3.조    회]\n[4.회원탈퇴]\n[0.로그아웃]");
 			System.out.println("메뉴 선택 : ");
 			int selectMenu = scan.nextInt();
-
+			
 			if (selectMenu == 1) {
-				AccountManager.getInstance().createAcc(identifier);
-				FileManager.getInstance().save();
+
 			}
 			else if (selectMenu == 2) {
-				// 구현해보시오.
-				AccountManager.getInstance().printAcc(identifier);
-				System.out.print("삭제계좌번호 : ");
-				int delNum = scan.nextInt();
-				AccountManager.getInstance().deleteAcc(delNum, identifier);
+
 			}
 			else if (selectMenu == 3) {
 				AccountManager.getInstance().printAcc(identifier);
 			}
 			else if (selectMenu == 4) {
-				identifier = um.deleteMember(identifier);
-				break;
+				um.deleteMember(identifier);
 			}
 			else if (selectMenu == 0) {
 				identifier = -1;
@@ -71,16 +68,12 @@ public class ATM {
 				break;
 			}
 			
+			
 		}
 		
 	}
 	
 	
-	void join() {
-		
-		UserManager.getInstance().joinMember();
-		
-	}
 	
 
 	
