@@ -10,10 +10,7 @@ public class ATM {
 	Scanner scan = new Scanner(System.in);
 	int identifier = -1;
 	
-	UserManager um = UserManager.getInstance();
-	
 	void play() {
-		UserManager.getInstance().printAllUser();
 		
 		while(true) {
 			System.out.println("[ATM]");
@@ -31,13 +28,11 @@ public class ATM {
 	}
 	
 	void join() {
-		um.joinMember();
+		
 	}
 	
 	void login() {
-		identifier = um.logUser();
-		if (identifier != 1) loginMenu();
-		else System.out.println("아이디또는 패스워드 확인");
+
 	}
 	
 	
@@ -57,14 +52,12 @@ public class ATM {
 
 			}
 			else if (selectMenu == 3) {
-				AccountManager.getInstance().printAcc(identifier);
+				
 			}
 			else if (selectMenu == 4) {
-				um.deleteMember(identifier);
+				
 			}
 			else if (selectMenu == 0) {
-				identifier = -1;
-				System.out.println("로그아웃 되었습니다.");
 				break;
 			}
 			

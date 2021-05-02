@@ -12,12 +12,7 @@ public class ATM {
 	
 	ATM() {
 		
-		boolean isLoad = FileManager.getInstance().loadData();
 		// 테스트 데이터 생성
-		if (!isLoad) {
-			UserManager.getInstance().setDummy();
-			FileManager.getInstance().saveData();
-		}
 		
 	}
 	
@@ -43,23 +38,16 @@ public class ATM {
 	
 	
 	void printAllDataByAllUser() {
-		
-		UserManager.getInstance().printAllUserInfo();
-		
+
 	}
 	
 	
 	void login() { 
 		
-		UserManager.getInstance().loginUser();
-		
 	}
 	
 	
 	void join() { 
-		
-		UserManager.getInstance().joinUser();
-
 		
 	}
 	

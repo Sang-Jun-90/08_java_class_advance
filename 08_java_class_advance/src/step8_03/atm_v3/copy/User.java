@@ -24,15 +24,7 @@ public class User {
 	
 	void printOneUserAllAccounts() {
 
-		if (accCount == 0) {
-			System.out.println(id + "\t" + password + "\t계좌를 개설해주세요.");
-		}
-		else if (accCount > 0) {
-			System.out.println(id + "\t" + password + "\t");
-			for (int i = 0; i < accCount; i++) {
-				System.out.println(accList[i].number + " : " + accList[i].money + "원");
-			}
-		}
+
 		
 	}
 	

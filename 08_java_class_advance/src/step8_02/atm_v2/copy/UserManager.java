@@ -6,13 +6,7 @@ import java.util.Scanner;
 import step8_02.atm_v2.UserManager;
 
 public class UserManager {
-	
-	private UserManager() {}
-	static private UserManager instance = new UserManager();
-	static public UserManager getInstance() {			
-			return instance;
-	}
-	
+		
 	Scanner scan = new Scanner(System.in);
 	Random ran = new Random();
 	
@@ -21,14 +15,7 @@ public class UserManager {
 	int userCnt = 0;					// 전체 회원 수
 	
 	void printAllUser() {
-		for (int i = 0; i < userCnt; i++) {
-			System.out.println(i+1 + " . id : " + userList[i].id + "pw : " + userList[i].pw);
-			if (userList[i].accCnt != 0) {
-				for (int j = 0; j < userList[i].accCnt; j++) {
-					System.out.println("(" + userList[i].acc[j].accNumber + ":" + userList[i].acc[j].money + ")");
-				}
-			}
-		}
+		
 	}
 	
 	
@@ -46,12 +33,6 @@ public class UserManager {
 		System.out.print("[로그인]패스워드를 입력하세요 : ");
 		String pw = scan.next();
 		
-		for (int i = 0; i < userCnt; i++) {
-			if (id.equals(userList[i].id) && pw.equals(userList[i].pw)) {
-				identifier = i;
-			}
-		}
-		
 		return identifier;
 
 	}
@@ -60,9 +41,6 @@ public class UserManager {
 	boolean checkId(String id) {
 
 		boolean isDuple = false;
-		for (int i = 0; i < userCnt; i++) {
-			if (id.equals(userList[i].id)) isDuple =true;
-		}
 		
 		return isDuple;
 	}
@@ -74,34 +52,9 @@ public class UserManager {
 		System.out.print("[회원가입]패스워드를 입력하세요 : ");
 		String pw = scan.next();
 		
-		Boolean isResult = checkId(id);
-		
-		if (isResult) {
-			System.out.println("중복");
-			return;
-		}
-		userList[userCnt].id = id;
-		userList[userCnt].pw = pw;
-		userCnt++;
-		System.out.println(id +"님 환영");
 	}
-
 	
 	int deleteMember(int identifier) {
-		
-		User[] temp = userList;
-		userList = new User[userCnt -1];
-		
-		int j = 0;
-		for (int i = 0; i < userCnt; i++) {
-			if (i != identifier) {
-				userList[j++] = temp[i];
-			}
-		}
-		userCnt--;
-		temp = null;
-		identifier = -1;
-		System.out.println("탈퇴");
 		
 		return identifier;
 		
