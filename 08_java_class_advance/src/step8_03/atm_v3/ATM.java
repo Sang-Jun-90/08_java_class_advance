@@ -10,7 +10,7 @@ public class ATM {
 	
 	ATM() {
 		
-		boolean isLoad = FileManager.getInstance().loadData();
+		boolean isLoad = FileManager.getInstance().loadData()
 		// 테스트 데이터 생성
 		if (!isLoad) {
 			UserManager.getInstance().setDummy();
